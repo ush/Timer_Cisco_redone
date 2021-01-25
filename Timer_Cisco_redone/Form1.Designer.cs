@@ -320,7 +320,7 @@ namespace Timer_Cisco_redone
             this.Polzunok.Name = "Polzunok";
             this.Polzunok.Size = new System.Drawing.Size(211, 56);
             this.Polzunok.TabIndex = 20;
-            this.Polzunok.Value = 100;
+            this.Polzunok.Value = 65;
             this.Polzunok.Scroll += new System.EventHandler(this.Polzunok_Scroll);
             // 
             // opacityValue
@@ -330,9 +330,9 @@ namespace Timer_Cisco_redone
             this.opacityValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opacityValue.Location = new System.Drawing.Point(351, 175);
             this.opacityValue.Name = "opacityValue";
-            this.opacityValue.Size = new System.Drawing.Size(169, 28);
+            this.opacityValue.Size = new System.Drawing.Size(158, 28);
             this.opacityValue.TabIndex = 21;
-            this.opacityValue.Text = "Видимость: 100%";
+            this.opacityValue.Text = "Видимость: 65%";
             // 
             // Controller
             // 
