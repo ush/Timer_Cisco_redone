@@ -19,6 +19,8 @@ namespace Timer_Cisco_redone
         {
             this.TopMost = true;
             InitializeComponent();
+            this.BackColor = Color.LimeGreen;
+            this.TransparencyKey = Color.LimeGreen;
         }
 
         private void Timer_Tick(object sender, EventArgs e)

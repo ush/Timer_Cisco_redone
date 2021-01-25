@@ -76,7 +76,7 @@ namespace Timer_Cisco_redone
             this.tmhLogo.Location = new System.Drawing.Point(-225, -124);
             this.tmhLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tmhLogo.Name = "tmhLogo";
-            this.tmhLogo.Size = new System.Drawing.Size(1695, 976);
+            this.tmhLogo.Size = new System.Drawing.Size(1668, 976);
             this.tmhLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.tmhLogo.TabIndex = 2;
             this.tmhLogo.TabStop = false;
@@ -92,6 +92,7 @@ namespace Timer_Cisco_redone
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Displayer";
             this.Text = "Displayer";
+            this.TransparencyKey = System.Drawing.Color.Lime;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Displayer_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.tmhLogo)).EndInit();
             this.ResumeLayout(false);

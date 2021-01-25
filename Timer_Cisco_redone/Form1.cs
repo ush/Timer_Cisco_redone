@@ -158,6 +158,7 @@ namespace Timer_Cisco_redone
         {
             displayer.Timer.Stop();
             presentation.Timer.Stop();
+            soundPlayer.Stop();
             Timer.Stop();
         }
 
@@ -165,6 +166,7 @@ namespace Timer_Cisco_redone
         {
             displayer.Timer.Start();
             presentation.Timer.Start();
+            soundPlayer.Play();
             Timer.Start();
         }
 
@@ -231,6 +233,12 @@ namespace Timer_Cisco_redone
                 presentation.Hide();
                 displayer.Show();
             }
+        }
+
+        private void Polzunok_Scroll(object sender, EventArgs e)
+        {
+            presentation.Opacity = ((double)Polzunok.Value / 100.0);
+            opacityValue.Text = "Видимость: " + Polzunok.Value.ToString() + "%";
         }
     }
 }
