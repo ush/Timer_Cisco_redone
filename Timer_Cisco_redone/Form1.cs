@@ -41,15 +41,14 @@ namespace Timer_Cisco_redone
             {
                 userName.Text.ToString();
                 Int32.Parse(userTime.Text.ToString());
-                Int32.Parse(userSeconds.Text.ToString());
             }
             catch (FormatException)
             {
                 userTime.Text = "";
                 userName.Text = "";
-                userSeconds.Text = "";
                 return;
             }
+
             if (userSeconds.Text == "")
             {
                 string[] row = { userName.Text, userTime.Text + ":0" };
@@ -194,10 +193,11 @@ namespace Timer_Cisco_redone
 
         private void addTime_Click(object sender, EventArgs e)
         {
+            int additional;
+
             try
             {
                 Int32.Parse(additionalTime.Text.ToString());
-                Int32.Parse(additionalSeconds.Text.ToString());
             }
             catch (FormatException)
             {
@@ -216,8 +216,14 @@ namespace Timer_Cisco_redone
             displayer.BackColor = SystemColors.Control;
             displayer.displayerTime.ForeColor = SystemColors.ControlText;
             displayer.displayerTime.BackColor = SystemColors.Control;
-
-            int additional = Int32.Parse(additionalTime.Text.ToString()) * 60 + Int32.Parse(additionalSeconds.Text.ToString());
+            if (additionalSeconds.Text == "")
+            {
+                additional = Int32.Parse(additionalTime.Text.ToString()) * 60 + 0;
+            }
+            else
+            {
+                additional = Int32.Parse(additionalTime.Text.ToString()) * 60 + Int32.Parse(additionalSeconds.Text.ToString());
+            }              
             ticks += additional;
             presentation.ticks += additional;
             displayer.ticks += additional;
