@@ -40,10 +40,10 @@ namespace Timer_Cisco_redone
             // presentationName
             // 
             this.presentationName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.presentationName.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.presentationName.Location = new System.Drawing.Point(12, 31);
+            this.presentationName.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.presentationName.Location = new System.Drawing.Point(-14, 28);
             this.presentationName.Name = "presentationName";
-            this.presentationName.Size = new System.Drawing.Size(423, 49);
+            this.presentationName.Size = new System.Drawing.Size(402, 37);
             this.presentationName.TabIndex = 0;
             this.presentationName.Text = "Сейчас выступает";
             this.presentationName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,10 +51,10 @@ namespace Timer_Cisco_redone
             // presentationTime
             // 
             this.presentationTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.presentationTime.Font = new System.Drawing.Font("Segoe UI", 72F);
-            this.presentationTime.Location = new System.Drawing.Point(1, 80);
+            this.presentationTime.Font = new System.Drawing.Font("Segoe UI", 64F);
+            this.presentationTime.Location = new System.Drawing.Point(-5, 65);
             this.presentationTime.Name = "presentationTime";
-            this.presentationTime.Size = new System.Drawing.Size(448, 158);
+            this.presentationTime.Size = new System.Drawing.Size(391, 131);
             this.presentationTime.TabIndex = 1;
             this.presentationTime.Text = "00:00";
             this.presentationTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -70,20 +70,21 @@ namespace Timer_Cisco_redone
             this.tmhLogo.BackColor = System.Drawing.SystemColors.Control;
             this.tmhLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tmhLogo.Image = global::Timer_Cisco_redone.Properties.Resources.tmh_logo_mini;
-            this.tmhLogo.Location = new System.Drawing.Point(-4, -16);
+            this.tmhLogo.Location = new System.Drawing.Point(0, -42);
             this.tmhLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tmhLogo.Name = "tmhLogo";
-            this.tmhLogo.Size = new System.Drawing.Size(464, 303);
+            this.tmhLogo.Size = new System.Drawing.Size(388, 303);
             this.tmhLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.tmhLogo.TabIndex = 2;
             this.tmhLogo.TabStop = false;
+            this.tmhLogo.Visible = false;
             // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(440, 264);
+            this.ClientSize = new System.Drawing.Size(374, 209);
             this.Controls.Add(this.tmhLogo);
             this.Controls.Add(this.presentationTime);
             this.Controls.Add(this.presentationName);

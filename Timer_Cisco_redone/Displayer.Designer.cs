@@ -47,7 +47,6 @@ namespace Timer_Cisco_redone
             this.displayerName.TabIndex = 0;
             this.displayerName.Text = "Сейчас выступает";
             this.displayerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.displayerName.Visible = false;
             // 
             // displayerTime
             // 
@@ -60,7 +59,6 @@ namespace Timer_Cisco_redone
             this.displayerTime.TabIndex = 1;
             this.displayerTime.Text = "00:00";
             this.displayerTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.displayerTime.Visible = false;
             // 
             // Timer
             // 
@@ -76,10 +74,11 @@ namespace Timer_Cisco_redone
             this.tmhLogo.Location = new System.Drawing.Point(-225, -124);
             this.tmhLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tmhLogo.Name = "tmhLogo";
-            this.tmhLogo.Size = new System.Drawing.Size(1668, 976);
+            this.tmhLogo.Size = new System.Drawing.Size(1687, 976);
             this.tmhLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.tmhLogo.TabIndex = 2;
             this.tmhLogo.TabStop = false;
+            this.tmhLogo.Visible = false;
             // 
             // Displayer
             // 

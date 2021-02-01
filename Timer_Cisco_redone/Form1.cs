@@ -21,6 +21,7 @@ namespace Timer_Cisco_redone
         int ticks;
         string minutes = "";
         string seconds = "";
+        int previndex = -1;
 
         public Controller()
         {
@@ -40,42 +41,49 @@ namespace Timer_Cisco_redone
             {
                 userName.Text.ToString();
                 Int32.Parse(userTime.Text.ToString());
+                Int32.Parse(userSeconds.Text.ToString());
             }
             catch (FormatException)
             {
                 userTime.Text = "";
                 userName.Text = "";
+                userSeconds.Text = "";
                 return;
             }
-            speakersInfo.Add(userName.Text + " время: " + userTime.Text);
-            string[] row = { userName.Text, userTime.Text };
-            Table.Rows.Add(row);
+            if (userSeconds.Text == "")
+            {
+                string[] row = { userName.Text, userTime.Text + ":0" };
+                Table.Rows.Add(row);
+            }
+            else
+            {
+                string[] row = { userName.Text, userTime.Text + ":" + userSeconds.Text };
+                Table.Rows.Add(row);
+            }
+            //speakersInfo.Add(userName.Text + " время: " + userTime.Text);
             userName.Text = "";
             userTime.Text = "";
+            userSeconds.Text = "";
         }
 
         private void Table_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (previndex != -1)
+            {
+                this.Table.Rows[previndex].Cells[2].Value = minutes + ":" + seconds;
+            }
+
+            previndex = this.Table.CurrentRow.Index;
+            
             try
             {
                 string temp_name = this.Table.CurrentRow.Cells[0].Value.ToString();
-                int temp_time = Int32.Parse(this.Table.CurrentRow.Cells[1].Value.ToString()) * 60;
+                var temp_parsedTime = this.Table.CurrentRow.Cells[1].Value.ToString().Split(':');
+                ticks = Int32.Parse(temp_parsedTime[0]) * 60 + Int32.Parse(temp_parsedTime[1]);
             }
             catch (NullReferenceException)
             {
                 return;
-            }
-
-            displayer.Show();
-
-            displayer.tmhLogo.Visible = false;
-            presentation.tmhLogo.Visible = false;
-
-            if (displayer.displayerName.Visible == false && displayer.displayerTime.Visible == false)
-            {
-                displayer.displayerName.Visible = true;
-                displayer.displayerTime.Visible = true;
-                displayer.tmhLogo.Visible = false;
             }
 
             if (buttonContinue.Enabled == false && buttonStop.Enabled == false && addTime.Enabled == false)
@@ -87,11 +95,16 @@ namespace Timer_Cisco_redone
                 presentationMode.Enabled = true;
             }
 
+            //parsing table contents
             currentSpeaker.Text = this.Table.CurrentRow.Cells[0].Value.ToString();
-            ticks = Int32.Parse(this.Table.CurrentRow.Cells[1].Value.ToString()) * 60;
-            presentation.ticks = Int32.Parse(this.Table.CurrentRow.Cells[1].Value.ToString()) * 60;
-            displayer.ticks = Int32.Parse(this.Table.CurrentRow.Cells[1].Value.ToString()) * 60;
 
+            var parsedTime = this.Table.CurrentRow.Cells[1].Value.ToString().Split(':');
+            ticks = Int32.Parse(parsedTime[0]) * 60 + Int32.Parse(parsedTime[1]);
+            
+            presentation.ticks = ticks;
+            displayer.ticks = ticks;
+
+            //changing colors
             presentation.presentationTime.BackColor = SystemColors.Control;
             presentation.BackColor = SystemColors.Control;
             presentation.presentationTime.ForeColor = SystemColors.ControlText;
@@ -100,6 +113,7 @@ namespace Timer_Cisco_redone
             displayer.BackColor = SystemColors.Control;
             displayer.displayerTime.ForeColor = SystemColors.ControlText;
 
+            //setting Names on forms
             displayer.displayerName.Text = this.Table.CurrentRow.Cells[0].Value.ToString();
             presentation.presentationName.Text = this.Table.CurrentRow.Cells[0].Value.ToString();
 
@@ -164,9 +178,17 @@ namespace Timer_Cisco_redone
 
         private void buttonContinue_Click(object sender, EventArgs e)
         {
+            int min = Math.Abs(ticks / 60);
+            int sec = Math.Abs(ticks % 60);
+
             displayer.Timer.Start();
             presentation.Timer.Start();
-            soundPlayer.Play();
+
+            if ((sec == 30 || sec == 20 || sec == 10 || sec <= 5) && min == 0 && ticks > 0)
+            {
+                soundPlayer.Play();
+            }
+            
             Timer.Start();
         }
 
@@ -175,10 +197,12 @@ namespace Timer_Cisco_redone
             try
             {
                 Int32.Parse(additionalTime.Text.ToString());
+                Int32.Parse(additionalSeconds.Text.ToString());
             }
             catch (FormatException)
             {
                 additionalTime.Text = "";
+                additionalSeconds.Text = "";
                 return;
             }
 
@@ -193,10 +217,13 @@ namespace Timer_Cisco_redone
             displayer.displayerTime.ForeColor = SystemColors.ControlText;
             displayer.displayerTime.BackColor = SystemColors.Control;
 
-            ticks += Int32.Parse(additionalTime.Text.ToString()) * 60;
-            presentation.ticks += Int32.Parse(additionalTime.Text.ToString()) * 60;
-            displayer.ticks += Int32.Parse(additionalTime.Text.ToString()) * 60;
+            int additional = Int32.Parse(additionalTime.Text.ToString()) * 60 + Int32.Parse(additionalSeconds.Text.ToString());
+            ticks += additional;
+            presentation.ticks += additional;
+            displayer.ticks += additional;
+
             additionalTime.Text = "";
+            additionalSeconds.Text = "";
         }
 
         private void logoShower_CheckedChanged(object sender, EventArgs e)

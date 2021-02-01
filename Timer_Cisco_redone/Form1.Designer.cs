@@ -37,6 +37,7 @@ namespace Timer_Cisco_redone
             this.Table = new System.Windows.Forms.DataGridView();
             this.tableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Show = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,6 +55,10 @@ namespace Timer_Cisco_redone
             this.label6 = new System.Windows.Forms.Label();
             this.Polzunok = new System.Windows.Forms.TrackBar();
             this.opacityValue = new System.Windows.Forms.Label();
+            this.additionalSeconds = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.userSeconds = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Polzunok)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +67,7 @@ namespace Timer_Cisco_redone
             // 
             this.userName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.userName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userName.Location = new System.Drawing.Point(58, 109);
+            this.userName.Location = new System.Drawing.Point(45, 106);
             this.userName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(217, 22);
@@ -73,7 +78,7 @@ namespace Timer_Cisco_redone
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(58, 18);
+            this.label1.Location = new System.Drawing.Point(45, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 54);
             this.label1.TabIndex = 2;
@@ -83,7 +88,7 @@ namespace Timer_Cisco_redone
             // 
             this.userTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.userTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userTime.Location = new System.Drawing.Point(58, 175);
+            this.userTime.Location = new System.Drawing.Point(45, 172);
             this.userTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.userTime.Name = "userTime";
             this.userTime.Size = new System.Drawing.Size(217, 22);
@@ -93,7 +98,7 @@ namespace Timer_Cisco_redone
             // 
             this.savebutton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.savebutton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.savebutton.Location = new System.Drawing.Point(58, 209);
+            this.savebutton.Location = new System.Drawing.Point(45, 266);
             this.savebutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.savebutton.Name = "savebutton";
             this.savebutton.Size = new System.Drawing.Size(141, 45);
@@ -111,14 +116,15 @@ namespace Timer_Cisco_redone
             this.Table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tableName,
             this.tableTime,
+            this.tableRemaining,
             this.Show});
-            this.Table.Location = new System.Drawing.Point(593, 31);
+            this.Table.Location = new System.Drawing.Point(619, 45);
             this.Table.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Table.Name = "Table";
             this.Table.RowHeadersWidth = 51;
             this.Table.RowTemplate.Height = 29;
             this.Table.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Table.Size = new System.Drawing.Size(428, 507);
+            this.Table.Size = new System.Drawing.Size(478, 599);
             this.Table.TabIndex = 6;
             this.Table.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Table_CellContentClick);
             // 
@@ -134,6 +140,12 @@ namespace Timer_Cisco_redone
             this.tableTime.MinimumWidth = 6;
             this.tableTime.Name = "tableTime";
             // 
+            // tableRemaining
+            // 
+            this.tableRemaining.HeaderText = "Превышение";
+            this.tableRemaining.MinimumWidth = 6;
+            this.tableRemaining.Name = "tableRemaining";
+            // 
             // Show
             // 
             this.Show.HeaderText = "Показать";
@@ -145,7 +157,7 @@ namespace Timer_Cisco_redone
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(58, 139);
+            this.label2.Location = new System.Drawing.Point(45, 136);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 28);
             this.label2.TabIndex = 7;
@@ -156,7 +168,7 @@ namespace Timer_Cisco_redone
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(58, 79);
+            this.label3.Location = new System.Drawing.Point(45, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 28);
             this.label3.TabIndex = 8;
@@ -166,7 +178,7 @@ namespace Timer_Cisco_redone
             // 
             this.currentSpeaker.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.currentSpeaker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.currentSpeaker.Location = new System.Drawing.Point(12, 287);
+            this.currentSpeaker.Location = new System.Drawing.Point(-1, 332);
             this.currentSpeaker.Name = "currentSpeaker";
             this.currentSpeaker.Size = new System.Drawing.Size(333, 29);
             this.currentSpeaker.TabIndex = 9;
@@ -183,7 +195,7 @@ namespace Timer_Cisco_redone
             this.currentTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.currentTime.AutoSize = true;
             this.currentTime.Font = new System.Drawing.Font("Segoe UI", 52.2F);
-            this.currentTime.Location = new System.Drawing.Point(47, 325);
+            this.currentTime.Location = new System.Drawing.Point(34, 370);
             this.currentTime.Name = "currentTime";
             this.currentTime.Size = new System.Drawing.Size(257, 116);
             this.currentTime.TabIndex = 10;
@@ -192,7 +204,7 @@ namespace Timer_Cisco_redone
             // additionalTime
             // 
             this.additionalTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.additionalTime.Location = new System.Drawing.Point(58, 471);
+            this.additionalTime.Location = new System.Drawing.Point(45, 520);
             this.additionalTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.additionalTime.Name = "additionalTime";
             this.additionalTime.Size = new System.Drawing.Size(186, 22);
@@ -203,7 +215,7 @@ namespace Timer_Cisco_redone
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.Location = new System.Drawing.Point(58, 441);
+            this.label5.Location = new System.Drawing.Point(45, 486);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(287, 28);
             this.label5.TabIndex = 12;
@@ -215,7 +227,7 @@ namespace Timer_Cisco_redone
             this.addTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.addTime.Enabled = false;
             this.addTime.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.addTime.Location = new System.Drawing.Point(58, 506);
+            this.addTime.Location = new System.Drawing.Point(45, 613);
             this.addTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addTime.Name = "addTime";
             this.addTime.Size = new System.Drawing.Size(141, 43);
@@ -231,7 +243,7 @@ namespace Timer_Cisco_redone
             this.buttonStop.Enabled = false;
             this.buttonStop.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.buttonStop.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonStop.Location = new System.Drawing.Point(346, 312);
+            this.buttonStop.Location = new System.Drawing.Point(358, 370);
             this.buttonStop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(126, 39);
@@ -246,7 +258,7 @@ namespace Timer_Cisco_redone
             this.buttonContinue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.buttonContinue.Enabled = false;
             this.buttonContinue.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.buttonContinue.Location = new System.Drawing.Point(346, 370);
+            this.buttonContinue.Location = new System.Drawing.Point(358, 428);
             this.buttonContinue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonContinue.Name = "buttonContinue";
             this.buttonContinue.Size = new System.Drawing.Size(156, 47);
@@ -262,7 +274,7 @@ namespace Timer_Cisco_redone
             this.logoShower.BackColor = System.Drawing.Color.Green;
             this.logoShower.Enabled = false;
             this.logoShower.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.logoShower.Location = new System.Drawing.Point(346, 511);
+            this.logoShower.Location = new System.Drawing.Point(358, 606);
             this.logoShower.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoShower.Name = "logoShower";
             this.logoShower.Size = new System.Drawing.Size(126, 38);
@@ -277,7 +289,7 @@ namespace Timer_Cisco_redone
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(346, 481);
+            this.label4.Location = new System.Drawing.Point(358, 576);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 28);
             this.label4.TabIndex = 17;
@@ -291,7 +303,7 @@ namespace Timer_Cisco_redone
             this.presentationMode.Cursor = System.Windows.Forms.Cursors.Default;
             this.presentationMode.Enabled = false;
             this.presentationMode.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.presentationMode.Location = new System.Drawing.Point(346, 109);
+            this.presentationMode.Location = new System.Drawing.Point(358, 147);
             this.presentationMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.presentationMode.Name = "presentationMode";
             this.presentationMode.Size = new System.Drawing.Size(156, 43);
@@ -306,7 +318,7 @@ namespace Timer_Cisco_redone
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(346, 79);
+            this.label6.Location = new System.Drawing.Point(358, 117);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(198, 28);
             this.label6.TabIndex = 19;
@@ -315,7 +327,7 @@ namespace Timer_Cisco_redone
             // Polzunok
             // 
             this.Polzunok.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Polzunok.Location = new System.Drawing.Point(346, 209);
+            this.Polzunok.Location = new System.Drawing.Point(358, 247);
             this.Polzunok.Maximum = 100;
             this.Polzunok.Name = "Polzunok";
             this.Polzunok.Size = new System.Drawing.Size(211, 56);
@@ -328,17 +340,59 @@ namespace Timer_Cisco_redone
             this.opacityValue.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.opacityValue.AutoSize = true;
             this.opacityValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opacityValue.Location = new System.Drawing.Point(351, 175);
+            this.opacityValue.Location = new System.Drawing.Point(363, 213);
             this.opacityValue.Name = "opacityValue";
             this.opacityValue.Size = new System.Drawing.Size(158, 28);
             this.opacityValue.TabIndex = 21;
             this.opacityValue.Text = "Видимость: 65%";
             // 
+            // additionalSeconds
+            // 
+            this.additionalSeconds.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.additionalSeconds.Location = new System.Drawing.Point(45, 576);
+            this.additionalSeconds.Name = "additionalSeconds";
+            this.additionalSeconds.Size = new System.Drawing.Size(186, 22);
+            this.additionalSeconds.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(45, 545);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(278, 28);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Дополнительное время (сек)";
+            // 
+            // userSeconds
+            // 
+            this.userSeconds.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.userSeconds.Location = new System.Drawing.Point(45, 233);
+            this.userSeconds.Name = "userSeconds";
+            this.userSeconds.Size = new System.Drawing.Size(217, 22);
+            this.userSeconds.TabIndex = 24;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(45, 199);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(115, 28);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Время (сек)";
+            // 
             // Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 577);
+            this.ClientSize = new System.Drawing.Size(1121, 674);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.userSeconds);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.additionalSeconds);
             this.Controls.Add(this.opacityValue);
             this.Controls.Add(this.Polzunok);
             this.Controls.Add(this.label6);
@@ -387,15 +441,20 @@ namespace Timer_Cisco_redone
         public System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonContinue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tableName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tableTime;
-        private System.Windows.Forms.DataGridViewButtonColumn Show;
         private System.Windows.Forms.CheckBox logoShower;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox presentationMode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TrackBar Polzunok;
         private System.Windows.Forms.Label opacityValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tableName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tableTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tableRemaining;
+        private System.Windows.Forms.DataGridViewButtonColumn Show;
+        private System.Windows.Forms.TextBox additionalSeconds;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox userSeconds;
+        private System.Windows.Forms.Label label8;
     }
 }
 
