@@ -48,16 +48,45 @@ namespace Timer_Cisco_redone
                 userName.Text = "";
                 return;
             }
+            int tmp_seconds  = 0;
+            
+            if (userSeconds.Text != "")
+            {
+                tmp_seconds = Int32.Parse(userSeconds.Text.ToString());
+            } else {
+                tmp_seconds = 0;
+            }
+
+            int tmp_minutes = Int32.Parse(userTime.Text.ToString());
+
+            tmp_minutes += tmp_seconds / 60;
+            tmp_seconds = tmp_seconds % 60;
 
             if (userSeconds.Text == "")
             {
-                string[] row = { userName.Text, userTime.Text + ":0" };
-                Table.Rows.Add(row);
+                if (tmp_minutes < 10) {
+                    string[] row = { userName.Text, "0" + userTime.Text + ":00" };
+                    Table.Rows.Add(row);
+                }
+                else {
+                    string[] row = { userName.Text, userTime.Text + ":00" };
+                    Table.Rows.Add(row);
+                }
             }
             else
             {
-                string[] row = { userName.Text, userTime.Text + ":" + userSeconds.Text };
-                Table.Rows.Add(row);
+                if (tmp_seconds < 10)
+                {
+                    string[] row = { userName.Text, tmp_minutes.ToString() + ":" + "0" + tmp_seconds.ToString() };
+                    Table.Rows.Add(row);
+                }
+                else
+                {
+                    string[] row = { userName.Text, tmp_minutes.ToString() + ":" + tmp_seconds.ToString() };
+                    Table.Rows.Add(row);
+                }
+
+                
             }
             //speakersInfo.Add(userName.Text + " время: " + userTime.Text);
             userName.Text = "";

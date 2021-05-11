@@ -31,14 +31,10 @@ namespace Timer_Cisco_redone
                 seconds = Math.Abs(ticks % 60).ToString();
                 if (ticks % 2 == 0)
                 {
-                    presentationTime.BackColor = Color.Red;
-                    this.BackColor = Color.Red;
-                    presentationTime.ForeColor = SystemColors.Control;
+                    presentationTime.ForeColor = Color.Black;
                 }
                 if (ticks % 2 != 0)
                 {
-                    presentationTime.BackColor = SystemColors.Control;
-                    this.BackColor = SystemColors.Control;
                     presentationTime.ForeColor = Color.Red;
                 }
 
