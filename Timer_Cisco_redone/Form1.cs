@@ -77,16 +77,30 @@ namespace Timer_Cisco_redone
             {
                 if (tmp_seconds < 10)
                 {
-                    string[] row = { userName.Text, tmp_minutes.ToString() + ":" + "0" + tmp_seconds.ToString() };
-                    Table.Rows.Add(row);
+                    if (tmp_minutes < 10)
+                    {
+                        string[] row = { userName.Text, "0" + tmp_minutes.ToString() + ":" + "0" + tmp_seconds.ToString() };
+                        Table.Rows.Add(row);
+                    }
+                    else
+                    {
+                        string[] row = { userName.Text, tmp_minutes.ToString() + ":" + "0" + tmp_seconds.ToString() };
+                        Table.Rows.Add(row);
+                    }
                 }
                 else
                 {
-                    string[] row = { userName.Text, tmp_minutes.ToString() + ":" + tmp_seconds.ToString() };
-                    Table.Rows.Add(row);
+                    if (tmp_minutes < 10)
+                    {
+                        string[] row = { userName.Text, "0" + tmp_minutes.ToString() + ":" + tmp_seconds.ToString() };
+                        Table.Rows.Add(row);
+                    }
+                    else
+                    {
+                        string[] row = { userName.Text, tmp_minutes.ToString() + ":" + tmp_seconds.ToString() };
+                        Table.Rows.Add(row);
+                    }
                 }
-
-                
             }
             //speakersInfo.Add(userName.Text + " время: " + userTime.Text);
             userName.Text = "";

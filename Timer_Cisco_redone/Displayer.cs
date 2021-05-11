@@ -26,14 +26,7 @@ namespace Timer_Cisco_redone
             {
                 minutes = Math.Abs(ticks / 60).ToString();
                 seconds = Math.Abs(ticks % 60).ToString();
-                if (ticks % 2 == 0)
-                {
-                    displayerTime.ForeColor = Color.Black;
-                }
-                if (ticks % 2 != 0)
-                {
-                    displayerTime.ForeColor = Color.Red;
-                }
+                displayerTime.ForeColor = Color.Red;
 
                 if (minutes.Length == 1)
                 {
