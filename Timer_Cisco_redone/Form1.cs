@@ -155,6 +155,12 @@ namespace Timer_Cisco_redone
             displayer.BackColor = SystemColors.Control;
             displayer.displayerTime.ForeColor = SystemColors.ControlText;
 
+            presentation.presentationName.BackColor = SystemColors.Control;
+            presentation.presentationName.ForeColor = SystemColors.ControlText;
+
+            displayer.displayerName.BackColor = SystemColors.Control;
+            displayer.displayerName.ForeColor = SystemColors.ControlText;
+
             //setting Names on forms
             displayer.displayerName.Text = this.Table.CurrentRow.Cells[0].Value.ToString();
             presentation.presentationName.Text = this.Table.CurrentRow.Cells[0].Value.ToString();
@@ -252,13 +258,19 @@ namespace Timer_Cisco_redone
             this.BackColor = SystemColors.Control;
             currentTime.ForeColor = SystemColors.ControlText;
 
-            presentation.BackColor = SystemColors.Control;
+            //changing colors
             presentation.presentationTime.ForeColor = SystemColors.ControlText;
             presentation.presentationTime.BackColor = SystemColors.Control;
 
-            displayer.BackColor = SystemColors.Control;
             displayer.displayerTime.ForeColor = SystemColors.ControlText;
             displayer.displayerTime.BackColor = SystemColors.Control;
+
+            presentation.presentationName.ForeColor = SystemColors.ControlText;
+            presentation.presentationName.BackColor = SystemColors.Control;
+
+            displayer.displayerName.ForeColor = SystemColors.ControlText;
+            displayer.displayerName.BackColor = SystemColors.Control;
+
             if (additionalSeconds.Text == "")
             {
                 additional = Int32.Parse(additionalTime.Text.ToString()) * 60 + 0;

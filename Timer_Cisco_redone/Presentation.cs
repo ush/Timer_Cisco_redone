@@ -31,6 +31,7 @@ namespace Timer_Cisco_redone
                 seconds = Math.Abs(ticks % 60).ToString();
                 
                 presentationTime.ForeColor = Color.Red;
+                presentationName.ForeColor = Color.Red;
 
                 if (minutes.Length == 1)
                 {
