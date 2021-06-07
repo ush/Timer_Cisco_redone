@@ -40,10 +40,10 @@ namespace Timer_Cisco_redone
             // displayerName
             // 
             this.displayerName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.displayerName.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold);
-            this.displayerName.Location = new System.Drawing.Point(-2, 62);
+            this.displayerName.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold);
+            this.displayerName.Location = new System.Drawing.Point(4, 41);
             this.displayerName.Name = "displayerName";
-            this.displayerName.Size = new System.Drawing.Size(1245, 96);
+            this.displayerName.Size = new System.Drawing.Size(1245, 133);
             this.displayerName.TabIndex = 0;
             this.displayerName.Text = "Сейчас выступает";
             this.displayerName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,7 +74,7 @@ namespace Timer_Cisco_redone
             this.tmhLogo.Location = new System.Drawing.Point(-225, -124);
             this.tmhLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tmhLogo.Name = "tmhLogo";
-            this.tmhLogo.Size = new System.Drawing.Size(1687, 976);
+            this.tmhLogo.Size = new System.Drawing.Size(1623, 976);
             this.tmhLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.tmhLogo.TabIndex = 2;
             this.tmhLogo.TabStop = false;
