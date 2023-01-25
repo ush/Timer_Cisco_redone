@@ -22,6 +22,7 @@ namespace Timer_Cisco_redone
         string minutes = "";
         string seconds = "";
         int previndex = -1;
+        bool mute = false;
 
         public Controller()
         {
@@ -135,6 +136,7 @@ namespace Timer_Cisco_redone
                 addTime.Enabled = true;
                 logoShower.Enabled = true;
                 presentationMode.Enabled = true;
+                soundMuter.Enabled = true;
             }
 
             //parsing table contents
@@ -209,10 +211,15 @@ namespace Timer_Cisco_redone
             }
             currentTime.Text = minutes + ":" + seconds;
 
-            if ((sec == 30 || sec == 20 || sec == 10 || sec <= 5) && min == 0 && ticks > 0)
+            if ((sec == 30 || sec == 20 || sec == 10 || sec <= 5) && min == 0 && ticks > 0 && !mute)
             {
                 soundPlayer.Play();
+            } 
+            else
+            {
+                soundPlayer.Stop();
             }
+
             ticks--;
         }
 
@@ -232,7 +239,7 @@ namespace Timer_Cisco_redone
             displayer.Timer.Start();
             presentation.Timer.Start();
 
-            if ((sec == 30 || sec == 20 || sec == 10 || sec <= 5) && min == 0 && ticks > 0)
+            if ((sec == 30 || sec == 20 || sec == 10 || sec <= 5) && min == 0 && ticks > 0 && !mute)
             {
                 soundPlayer.Play();
             }
@@ -327,6 +334,22 @@ namespace Timer_Cisco_redone
         {
             presentation.Opacity = ((double)Polzunok.Value / 100.0);
             opacityValue.Text = "Видимость: " + Polzunok.Value.ToString() + "%";
+        }
+
+        private void soundMuter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (soundMuter.Checked)
+            {
+                soundMuter.Text = "Включить";
+                soundMuter.BackColor = Color.Green;
+                mute = true;
+            }
+            else
+            {
+                soundMuter.Text = "Выключить";
+                soundMuter.BackColor = Color.Red;
+                mute = false;
+            }
         }
     }
 }

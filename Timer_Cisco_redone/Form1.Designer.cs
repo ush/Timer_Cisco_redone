@@ -59,6 +59,8 @@ namespace Timer_Cisco_redone
             this.label7 = new System.Windows.Forms.Label();
             this.userSeconds = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.soundMuter = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Polzunok)).BeginInit();
             this.SuspendLayout();
@@ -78,7 +80,7 @@ namespace Timer_Cisco_redone
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(45, 15);
+            this.label1.Location = new System.Drawing.Point(36, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(306, 54);
             this.label1.TabIndex = 2;
@@ -101,7 +103,7 @@ namespace Timer_Cisco_redone
             this.savebutton.Location = new System.Drawing.Point(45, 266);
             this.savebutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.savebutton.Name = "savebutton";
-            this.savebutton.Size = new System.Drawing.Size(141, 45);
+            this.savebutton.Size = new System.Drawing.Size(156, 45);
             this.savebutton.TabIndex = 4;
             this.savebutton.Text = "Сохранить";
             this.savebutton.UseVisualStyleBackColor = true;
@@ -230,7 +232,7 @@ namespace Timer_Cisco_redone
             this.addTime.Location = new System.Drawing.Point(45, 613);
             this.addTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addTime.Name = "addTime";
-            this.addTime.Size = new System.Drawing.Size(141, 43);
+            this.addTime.Size = new System.Drawing.Size(156, 45);
             this.addTime.TabIndex = 13;
             this.addTime.Text = "Добавить";
             this.addTime.UseVisualStyleBackColor = false;
@@ -246,7 +248,7 @@ namespace Timer_Cisco_redone
             this.buttonStop.Location = new System.Drawing.Point(358, 370);
             this.buttonStop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(126, 39);
+            this.buttonStop.Size = new System.Drawing.Size(156, 45);
             this.buttonStop.TabIndex = 14;
             this.buttonStop.Text = "Стоп";
             this.buttonStop.UseVisualStyleBackColor = false;
@@ -261,7 +263,7 @@ namespace Timer_Cisco_redone
             this.buttonContinue.Location = new System.Drawing.Point(358, 428);
             this.buttonContinue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonContinue.Name = "buttonContinue";
-            this.buttonContinue.Size = new System.Drawing.Size(156, 47);
+            this.buttonContinue.Size = new System.Drawing.Size(156, 45);
             this.buttonContinue.TabIndex = 15;
             this.buttonContinue.Text = "Продолжить";
             this.buttonContinue.UseVisualStyleBackColor = false;
@@ -274,10 +276,10 @@ namespace Timer_Cisco_redone
             this.logoShower.BackColor = System.Drawing.Color.Green;
             this.logoShower.Enabled = false;
             this.logoShower.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.logoShower.Location = new System.Drawing.Point(358, 606);
+            this.logoShower.Location = new System.Drawing.Point(358, 613);
             this.logoShower.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoShower.Name = "logoShower";
-            this.logoShower.Size = new System.Drawing.Size(126, 38);
+            this.logoShower.Size = new System.Drawing.Size(156, 45);
             this.logoShower.TabIndex = 16;
             this.logoShower.Text = "Показать";
             this.logoShower.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -289,7 +291,7 @@ namespace Timer_Cisco_redone
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(358, 576);
+            this.label4.Location = new System.Drawing.Point(358, 583);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 28);
             this.label4.TabIndex = 17;
@@ -306,7 +308,7 @@ namespace Timer_Cisco_redone
             this.presentationMode.Location = new System.Drawing.Point(358, 147);
             this.presentationMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.presentationMode.Name = "presentationMode";
-            this.presentationMode.Size = new System.Drawing.Size(156, 43);
+            this.presentationMode.Size = new System.Drawing.Size(156, 45);
             this.presentationMode.TabIndex = 18;
             this.presentationMode.Text = "Включить";
             this.presentationMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -384,11 +386,41 @@ namespace Timer_Cisco_redone
             this.label8.TabIndex = 25;
             this.label8.Text = "Время (сек)";
             // 
+            // soundMuter
+            // 
+            this.soundMuter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.soundMuter.Appearance = System.Windows.Forms.Appearance.Button;
+            this.soundMuter.BackColor = System.Drawing.Color.Red;
+            this.soundMuter.Enabled = false;
+            this.soundMuter.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.soundMuter.Location = new System.Drawing.Point(358, 520);
+            this.soundMuter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.soundMuter.Name = "soundMuter";
+            this.soundMuter.Size = new System.Drawing.Size(156, 45);
+            this.soundMuter.TabIndex = 28;
+            this.soundMuter.Text = "Выключить";
+            this.soundMuter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.soundMuter.UseVisualStyleBackColor = false;
+            this.soundMuter.CheckedChanged += new System.EventHandler(this.soundMuter_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label9.Location = new System.Drawing.Point(358, 490);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 28);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Звук";
+            // 
             // Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1121, 674);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.soundMuter);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.userSeconds);
             this.Controls.Add(this.label7);
@@ -455,6 +487,8 @@ namespace Timer_Cisco_redone
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox userSeconds;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox soundMuter;
+        private System.Windows.Forms.Label label9;
     }
 }
 
