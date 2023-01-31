@@ -34,6 +34,7 @@ namespace Timer_Cisco_redone
             this.displayerTime = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.tmhLogo = new System.Windows.Forms.PictureBox();
+            this.textDisplayer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tmhLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,6 +81,18 @@ namespace Timer_Cisco_redone
             this.tmhLogo.TabStop = false;
             this.tmhLogo.Visible = false;
             // 
+            // textDisplayer
+            // 
+            this.textDisplayer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textDisplayer.Font = new System.Drawing.Font("Segoe UI", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textDisplayer.Location = new System.Drawing.Point(-1, 0);
+            this.textDisplayer.Name = "textDisplayer";
+            this.textDisplayer.Size = new System.Drawing.Size(1258, 718);
+            this.textDisplayer.TabIndex = 3;
+            this.textDisplayer.Text = "Сейчас выступает";
+            this.textDisplayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textDisplayer.Visible = false;
+            // 
             // Displayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -88,6 +101,7 @@ namespace Timer_Cisco_redone
             this.Controls.Add(this.tmhLogo);
             this.Controls.Add(this.displayerTime);
             this.Controls.Add(this.displayerName);
+            this.Controls.Add(this.textDisplayer);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Displayer";
             this.Text = "Displayer";
@@ -104,5 +118,6 @@ namespace Timer_Cisco_redone
         public System.Windows.Forms.Label displayerTime;
         public System.Windows.Forms.Timer Timer;
         public System.Windows.Forms.PictureBox tmhLogo;
+        public System.Windows.Forms.Label textDisplayer;
     }
 }

@@ -34,6 +34,7 @@ namespace Timer_Cisco_redone
             this.presentationTime = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.tmhLogo = new System.Windows.Forms.PictureBox();
+            this.textPresentation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tmhLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@ namespace Timer_Cisco_redone
             // 
             this.presentationName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.presentationName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.presentationName.Location = new System.Drawing.Point(-14, 15);
+            this.presentationName.Location = new System.Drawing.Point(-14, 14);
             this.presentationName.Name = "presentationName";
             this.presentationName.Size = new System.Drawing.Size(402, 66);
             this.presentationName.TabIndex = 0;
@@ -79,6 +80,17 @@ namespace Timer_Cisco_redone
             this.tmhLogo.TabStop = false;
             this.tmhLogo.Visible = false;
             // 
+            // textPresentation
+            // 
+            this.textPresentation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textPresentation.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.textPresentation.Location = new System.Drawing.Point(-1, 15);
+            this.textPresentation.Name = "textPresentation";
+            this.textPresentation.Size = new System.Drawing.Size(375, 200);
+            this.textPresentation.TabIndex = 3;
+            this.textPresentation.Text = "Сейчас выступает";
+            this.textPresentation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -88,6 +100,7 @@ namespace Timer_Cisco_redone
             this.Controls.Add(this.tmhLogo);
             this.Controls.Add(this.presentationTime);
             this.Controls.Add(this.presentationName);
+            this.Controls.Add(this.textPresentation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Presentation";
@@ -107,5 +120,6 @@ namespace Timer_Cisco_redone
         public System.Windows.Forms.PictureBox tmhLogo;
         public System.Windows.Forms.Label presentationName;
         public System.Windows.Forms.Label presentationTime;
+        public System.Windows.Forms.Label textPresentation;
     }
 }

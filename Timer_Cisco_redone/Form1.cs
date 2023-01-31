@@ -7,9 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Media;
 using System.Windows.Forms;
+using System.IO;
+using System.Data.OleDb;
 
 namespace Timer_Cisco_redone
 {
+
     public partial class Controller : Form
     {
         public SoundPlayer soundPlayer;
@@ -137,6 +140,9 @@ namespace Timer_Cisco_redone
                 logoShower.Enabled = true;
                 presentationMode.Enabled = true;
                 soundMuter.Enabled = true;
+                backgroundColorChooser.Enabled = true;
+                textColorChooser.Enabled = true;
+                textShower.Enabled = true;
             }
 
             //parsing table contents
@@ -349,6 +355,179 @@ namespace Timer_Cisco_redone
                 soundMuter.Text = "Выключить";
                 soundMuter.BackColor = Color.Red;
                 mute = false;
+            }
+        }
+
+        private void fileChoser_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fdlg = new OpenFileDialog();
+
+            fdlg.Title = "Select file";
+
+            fdlg.InitialDirectory = @"c:\";
+
+            fdlg.FileName = txtFileName.Text;
+
+            fdlg.Filter = "Text and CSV Files(*.txt, *.csv)|*.txt;*.csv|Text Files(*.txt)|*.txt|CSV Files(*.csv)|*.csv|All Files(*.*)|*.*";
+
+            fdlg.FilterIndex = 1;
+
+            fdlg.RestoreDirectory = true;
+
+            if (fdlg.ShowDialog() == DialogResult.OK)
+
+            {
+
+                txtFileName.Text = fdlg.FileName;
+
+                InsertData(txtFileName.Text);
+
+                Application.DoEvents();
+
+            }
+        }
+
+        public void InsertData(string strFileName)
+        {
+            using (StreamReader sr = new StreamReader(strFileName))
+            {
+                string[] headers = sr.ReadLine().Split(',');
+                while (!sr.EndOfStream)
+                {
+                    string[] row = sr.ReadLine().Split(',');
+                    Table.Rows.Add(row);
+                }
+
+            }
+        }
+
+        private void saveFile_Click(object sender, EventArgs e)
+        {
+            if (Table.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "CSV (*.csv)|*.csv";
+                sfd.FileName = "Список.csv";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("Невозможно записать сюда: " + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            int columnCount = Table.Columns.Count;
+                            string columnNames = "";
+                            string[] outputCsv = new string[Table.Rows.Count];
+                            for (int i = 0; i < columnCount - 2; i++)
+                            {
+                                columnNames += Table.Columns[i].HeaderText.ToString();
+                                if (i != columnCount - 3)
+                                {
+                                    columnNames += ",";
+                                }
+                            }
+                            outputCsv[0] += columnNames;
+
+                            for (int i = 1; i < Table.Rows.Count; i++)
+                            {
+                                for (int j = 0; j < columnCount - 2; j++)
+                                {
+                                    outputCsv[i] += Table.Rows[i - 1].Cells[j].Value.ToString();
+                                    if (j != columnCount - 3)
+                                    {
+                                        outputCsv[i] += ",";
+                                    }
+                                }
+                            }
+                            File.WriteAllLines(sfd.FileName, outputCsv);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ошибка :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Нечего сохранять", "Info");
+            }
+        }
+
+        private void textShower_CheckedChanged(object sender, EventArgs e)
+        {
+            if (textShower.Checked)
+            {
+                displayer.displayerName.Visible = false;
+                displayer.displayerTime.Visible = false;
+                presentation.presentationName.Visible = false;
+                presentation.presentationTime.Visible = false;
+                displayer.textDisplayer.Visible = true;
+                presentation.textPresentation.Visible = true;
+
+                displayer.textDisplayer.Text = textInput.Text;
+                presentation.textPresentation.Text = textInput.Text;
+
+                textShower.Text = "Скрыть";
+                textShower.BackColor = Color.Red;
+            }
+            else
+            {
+                displayer.displayerName.Visible = true;
+                displayer.displayerTime.Visible = true;
+                presentation.presentationName.Visible = true;
+                presentation.presentationTime.Visible = true;
+
+                presentation.presentationTime.BackColor = SystemColors.Control;
+                presentation.presentationName.BackColor = SystemColors.Control;
+
+                displayer.textDisplayer.Visible = false;
+                presentation.textPresentation.Visible = false;
+
+                textShower.Text = "Показать";
+                textShower.BackColor = Color.Green;
+            }
+        }
+
+        private void textColorChooser_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.AllowFullOpen = false;
+            colorDlg.AnyColor = true;
+            colorDlg.SolidColorOnly = false;
+
+            if (colorDlg.ShowDialog() == DialogResult.OK)
+            {
+                displayer.textDisplayer.ForeColor = colorDlg.Color;
+                presentation.textPresentation.ForeColor = colorDlg.Color;
+            }
+        }
+
+        private void backgroundColorChooser_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.AllowFullOpen = false;
+            colorDlg.AnyColor = true;
+            colorDlg.SolidColorOnly = false;
+
+            if (colorDlg.ShowDialog() == DialogResult.OK)
+            {
+                displayer.textDisplayer.BackColor = colorDlg.Color;
+                presentation.textPresentation.BackColor = colorDlg.Color;
+                presentation.presentationTime.BackColor = colorDlg.Color;
+                presentation.presentationName.BackColor = colorDlg.Color;
             }
         }
     }
